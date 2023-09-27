@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link th:replace="/fragments/head :: head">
+</head>
+<body>
+<div class="login-container">
+  <h2>Registrarse</h2>
+  <form th:action="@{/registro}" method="POST">
+    <input type="text" name="name" id="client" th:value="${name}" placeholder="Nombre Usuario" required>
+    <input type="text" name="email" id="email" th:value="${email}" placeholder="Email" required>
+    <input type="password" name="password" id="password" th:value="${password}" placeholder="Contraseña" required>
+    <input type="password" name="password2" id="password2" th:value="${password2}" placeholder="Repetir Contraseña" required>
+    <button type="submit">Registrarse</button>
+  </form>
+  <p> <a href="login">Volver</a></p> <!-- Nuevo botón de registro -->
+</div>
+</body>
+</html>
