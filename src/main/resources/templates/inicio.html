@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
     <link th:replace="/fragments/head :: head">
 </head>
@@ -8,8 +8,9 @@
     <h2>Inicio Tienda</h2>
     <nav class="navbar">
         <ul>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Mis Pedidos</a></li>
+            <li><a href="/producto/listaProductos">Productos</a></li>
+            <li><a href="/pedido/listaPedidos">Pedidos</a></li>
+            <li><a href="#">Carrito</a></li>
         </ul>
     </nav>
     <div class="buttons-container">

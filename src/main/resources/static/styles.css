@@ -81,3 +81,60 @@ body {
 .navbar a:hover {
     text-decoration: underline; /* Subrayar el enlace de navegación al pasar el mouse */
 }
+
+.product-table {
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ccc; /* Añadir un borde opcional */
+    border-collapse: collapse; /* Colapsar bordes de celdas */
+    width: 100%; /* Hacer que la tabla ocupe todo el ancho disponible */
+}
+
+.product-table th,
+.product-table td {
+    padding: 8px; /* Espaciado interno para celdas de encabezado y datos */
+    border: 1px solid #ccc; /* Añadir un borde a las celdas */
+}
+
+.product-table th {
+    background-color: #007BFF; /* Color de fondo del encabezado */
+    color: #fff; /* Color del texto del encabezado */
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo alternado para filas pares */
+}
+
+.product-table tr:hover {
+    background-color: #e0e0e0; /* Cambia el color de fondo al pasar el mouse por encima */
+}
+
+#menu{
+    background-color: #000;
+
+}
+
+#menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul li{
+    display: inline-block;
+}
+
+#menu ul li a{
+    color: white;
+    display: block;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+#menu ul li a:hover{
+    background-color: #42B881;
+}
+
+.item-r{
+    float: right;
+}
+

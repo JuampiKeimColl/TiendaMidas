@@ -1,6 +1,6 @@
 package com.midas.tienda;
 
-import com.midas.tienda.service.ClientService;
+import com.midas.tienda.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,11 +15,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SeguridadWeb extends WebSecurityConfigurerAdapter {
     @Autowired
-    public ClientService clientService;
+    public ClienteService clienteService;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(clientService)
+        auth.userDetailsService(clienteService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
     @Override

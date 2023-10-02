@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Productos</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="navbar">
+  <ul>
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Productos</a></li>
+    <li><a href="#">Clientes</a></li>
+  </ul>
+</div>
+
+<div class="product-list-container">
+  <h2>Lista de Pedidos</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID del Producto</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Acciones</th> <!-- Agregamos una columna para las acciones -->
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Aquí se generarán las filas de la tabla con los detalles de los productos -->
+    <tr>
+      <td>1</td>
+      <td>Producto 1</td>
+      <td>Descripción del Producto 1</td>
+      <td>$19.99</td>
+      <td>50</td>
+      <td>
+        <button onclick="editarProducto(1)">Modificar</button> <!-- Botón para editar -->
+        <button onclick="eliminarProducto(1)">Eliminar</button> <!-- Botón para eliminar -->
+      </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Producto 2</td>
+      <td>Descripción del Producto 2</td>
+      <td>$29.99</td>
+      <td>30</td>
+      <td>
+        <button onclick="editarProducto(2)">Modificar</button>
+        <button onclick="eliminarProducto(2)">Eliminar</button>
+      </td>
+    </tr>
+    <!-- Agrega más filas para otros productos si es necesario -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Función para editar un producto
+  function editarProducto(productId) {
+    // Redirecciona a la página de edición del producto con el ID específico
+    window.location.href = `/editar-producto?id=${productId}`;
+  }
+
+  // Función para eliminar un producto
+  function eliminarProducto(productId) {
+    // Aquí puedes implementar la lógica para eliminar el producto
+    // Puede ser mediante una confirmación o una solicitud a la API
+    // Por ejemplo, puedes mostrar un mensaje de confirmación y luego enviar una solicitud DELETE a la API.
+    // Si el producto se elimina correctamente, puedes recargar la página o actualizar la lista de productos.
+  }
+</script>
+</body>
+</html>

@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
-    <link th:replace="/fragments/head :: head">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
 </head>
 <body>
 <div class="login-container">
     <h2>Inicio Tienda</h2>
-    <nav class="navbar">
+    <div id="menu">
         <ul>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Usuarios</a></li>
-            <li><a href="#">Pedidos</a></li>
+            <li><a href="/lista_usuarios">Lista Usuarios</a></li>
+            <li><a href="/lista_pedidos">Lista Pedidos</a></li>
+            <li><a href="/producto/listaProductos">Productos</a></li>
+<!--            <li class="item-r"><a href="#">Contacto</a></li>-->
         </ul>
-    </nav>
+    </div>
+<!--    <nav class="navbar">-->
+<!--        <ul>-->
+<!--&lt;!&ndash;            <li><a href="#">Productos</a></li>&ndash;&gt;-->
+<!--            <li><a href="lista_usuarios">Lista Usuarios</a></li>-->
+<!--            <li><a href="lista_pedidos">Lista Pedidos</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
     <div class="buttons-container">
         <a href="/logout" class="button">Cerrar Sesión</a>
     </div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
+<head>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda</title>
+</head>
+<body>
+<div id="menu">
+  <ul>
+    <li><a href="/lista_usuarios">Lista Usuarios</a></li>
+    <li><a href="/lista_pedidos">Lista Pedidos</a></li>
+    <li><a href="/producto/listaProductos">Productos</a></li>
+                <li class="item-r"><a href="/producto/registrar">Crear Producto</a></li>
+  </ul>
+</div>
+<!--<div class="navbar">-->
+<!--  <ul>-->
+<!--    <li><a href="/inicio">Inicio</a></li>-->
+<!--    <li><a href="/admin/dashboard">Panel Admin</a></li>-->
+<!--    <li><a href="/producto">Crear Productos</a></li>-->
+<!--    <li><a href="#">Carrito</a></li>-->
+<!--  </ul>-->
+<!--</div>-->
+
+<div class="product-list-container">
+  <h2>Lista de Productos</h2>
+  <table class="product-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Estado</th>
+      <th>Stock</th>
+    </tr>
+    </thead>
+    <tbody th:each="product : ${productos}">
+    <!-- Aquí se generarán las filas de la tabla con los detalles de los productos -->
+    <tr>
+      <th scope="row" th:text="${product.}"></th>
+      <td>Producto 1</td>
+      <td>Descripción del Producto 1</td>
+      <td>$19.99</td>
+      <td>10</td>
+      <td>2023-09-30</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Producto 2</td>
+      <td>Descripción del Producto 2</td>
+      <td>$24.99</td>
+      <td>5</td>
+      <td>2023-09-30</td>
+      <td>50</td>
+    </tr>
+    <!-- Agrega más filas para otros productos si es necesario -->
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

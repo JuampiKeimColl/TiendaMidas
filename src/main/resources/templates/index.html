@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
   <link th:replace="/fragments/head :: head">
 </head>
@@ -9,7 +9,7 @@
 
     <p> <a href="login">Iniciar Sesión </a></p>
 
-  <p>¿No tienes una cuenta? <a href="registrar">Registrarse</a></p> <!-- Nuevo botón de registro -->
+  <p>¿No tienes una cuenta? <a href="/registrar">Registrarse</a></p> <!-- Nuevo botón de registro -->
 </div>
 </body>
 </html>
