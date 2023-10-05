@@ -14,6 +14,8 @@ import com.midas.nuevatienda.util.EmailUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -44,11 +46,11 @@ public class ClienteService {
         return clienteRepository.findAllByClienteRol(rol);
     }
 
-    public void asignarRol(Rol rol){
-        Cliente cliente = new Cliente();
-        cliente.setRol(rol);
-
-    }
+//    public void asignarRol(Rol rol){
+//        Cliente cliente = new Cliente();
+//        cliente.setRol(rol);
+//
+//    }
 
     public void validarCliente(RegistroRequest registroRequest) throws BaseException {
         if(Strings.isEmpty(registroRequest.getName())){

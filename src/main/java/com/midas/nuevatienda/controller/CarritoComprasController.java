@@ -1,6 +1,9 @@
 package com.midas.nuevatienda.controller;
 
+import com.midas.nuevatienda.exceptions.BaseException;
 import com.midas.nuevatienda.persistence.entity.CarritoCompras;
+import com.midas.nuevatienda.request.ProductoRequest;
+import com.midas.nuevatienda.response.ErrorResponse;
 import com.midas.nuevatienda.service.CarritoComprasService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,7 +13,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,17 +27,19 @@ public class CarritoComprasController {
     @Autowired
     CarritoComprasService carritoComprasService;
 
-    @PostMapping(path ="/agregarProductoAlCarrito", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value ="/agregarProductoAlCarrito")
     @Operation(summary = "Método para agregar producto al carrito.", responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = String.class))}),
+                    schema = @Schema(implementation = CarritoCompras.class))}),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))}),
+                    schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "406", description = "Not Acceptable", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))}),
+                    schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "500", description = "Generic Error", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))})})
-    public CarritoCompras agregarProductoAlCarrito(Long productoId, Long clienteId, Integer cantidad ){
+                    schema = @Schema(implementation = Error.class))})
+        }
+    )
+    public CarritoCompras agregarProductoAlCarrito(Long productoId, Long clienteId, Integer cantidad ) throws BaseException {
         return carritoComprasService.agregarProductoAlCarrito(productoId, clienteId, cantidad);
 
     }

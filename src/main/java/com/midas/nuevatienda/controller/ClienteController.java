@@ -74,13 +74,13 @@ public class ClienteController {
     @GetMapping("/login")
     @Operation(summary = "Inicio de sesión.", responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = String.class))}),
+                    schema = @Schema(implementation = Cliente.class))}),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))}),
+                    schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "406", description = "Not Acceptable", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))}),
+                    schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "500", description = "Generic Error", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))})})
+                    schema = @Schema(implementation = ErrorResponse.class))})})
     public Cliente login(@RequestParam(required = false) String email, String password){
         if (email!=null){
 
@@ -94,13 +94,13 @@ public class ClienteController {
     @GetMapping("/listarUsuarios")
     @Operation(summary = "Método para listar todos los usuarios.", responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = String.class))}),
+                    schema = @Schema(implementation = Cliente.class))}),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))}),
+                    schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "406", description = "Not Acceptable", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))}),
+                    schema = @Schema(implementation = ErrorResponse.class))}),
             @ApiResponse(responseCode = "500", description = "Generic Error", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = Error.class))})})
+                    schema = @Schema(implementation = ErrorResponse.class))})})
     public List<Cliente> listarUsuarios(){
         return clienteService.listarUsuarios();
     }
@@ -108,7 +108,7 @@ public class ClienteController {
     @GetMapping("/roles{rol}")
     @Operation(summary = "Método para listar según rol.", responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
-                    schema = @Schema(implementation = String.class))}),
+                    schema = @Schema(implementation = Cliente.class))}),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                     schema = @Schema(implementation = Error.class))}),
             @ApiResponse(responseCode = "406", description = "Not Acceptable", content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,

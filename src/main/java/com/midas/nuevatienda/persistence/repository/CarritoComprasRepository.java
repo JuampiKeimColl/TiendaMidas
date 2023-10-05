@@ -10,8 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface CarritoComprasRepository extends JpaRepository<CarritoCompras, Long> {
-    @Query("SELECT c.carritoId FROM CarritoCompras c WHERE c.cliente= :clienteId")
-    Optional<CarritoCompras> buscarCarritoActivoPorIdDeUsuario(@Param("clienteId")String clienteId);
+    @Query("SELECT c FROM CarritoCompras c WHERE c.cliente.clienteId = :clienteId")
+    Optional<CarritoCompras> buscarCarritoActivoPorIdDeUsuario(@Param("clienteId") Long clienteId);
+
     //SELECT c FROM Cliente c WHERE c.email = :email AND c.password = :password
 
     @Query("SELECT c.carritoId FROM CarritoCompras c WHERE c.cliente.clienteId = :clienteId")
