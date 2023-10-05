@@ -1,10 +1,7 @@
 package com.midas.nuevatienda.config;
 
 import com.midas.nuevatienda.controller.CodigoRespuestaEnum;
-import com.midas.nuevatienda.exceptions.BaseException;
-import com.midas.nuevatienda.exceptions.ContrasenasDiferentesException;
-import com.midas.nuevatienda.exceptions.EmailInvalidoException;
-import com.midas.nuevatienda.exceptions.NombreInvalidoException;
+import com.midas.nuevatienda.exceptions.*;
 import com.midas.nuevatienda.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -53,6 +50,48 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     public ResponseEntity<Object> handleEmailInvalidoExceptionException(final EmailInvalidoException exception,
                                                              final WebRequest request){
+        return this.builErrorResponse(exception,HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(DescripcionInvalidaException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ResponseEntity<Object> handleDescripcionInvalidaException(final DescripcionInvalidaException exception,
+                                                                     final WebRequest request){
+        return this.builErrorResponse(exception,HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(NombreProductoInvalidoException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ResponseEntity<Object> handleNombreProductoInvalidoException(final NombreProductoInvalidoException exception,
+                                                                     final WebRequest request){
+        return this.builErrorResponse(exception,HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(PrecioInvalidoException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ResponseEntity<Object> handlePrecioInvalidoException(final PrecioInvalidoException exception,
+                                                                        final WebRequest request){
+        return this.builErrorResponse(exception,HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(ProductoInexistenteException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ResponseEntity<Object> handleProductoInexistenteException(final ProductoInexistenteException exception,
+                                                                final WebRequest request){
+        return this.builErrorResponse(exception,HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(ClienteInexistenteException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ResponseEntity<Object> handleClienteInexistenteException(final ClienteInexistenteException exception,
+                                                                     final WebRequest request){
+        return this.builErrorResponse(exception,HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(CarritoInexistenteException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ResponseEntity<Object> handleCarritoInexistenteException(final CarritoInexistenteException exception,
+                                                                    final WebRequest request){
         return this.builErrorResponse(exception,HttpStatus.NOT_ACCEPTABLE);
     }
 
