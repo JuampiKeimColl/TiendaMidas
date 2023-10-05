@@ -1,13 +1,16 @@
-package com.midas.nuevatienda.dto;
+package com.midas.nuevatienda.response;
 
 import com.midas.nuevatienda.persistence.entity.CarritoCompras;
 import com.midas.nuevatienda.persistence.entity.enums.Estado;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
-public class ProductoDTO {
+@Schema(description = "response endpoints: /crearProducto")
+public class ProductoResponse extends BaseResponse{
     private Long productoId;
     private String productoName;
     private String descripcion;
