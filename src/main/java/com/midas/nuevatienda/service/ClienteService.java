@@ -13,14 +13,24 @@ import com.midas.nuevatienda.request.RegistroRequest;
 import com.midas.nuevatienda.util.EmailUtils;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ClienteService {
+public class ClienteService implements UserDetailsService {
     private final ClienteRepository clienteRepository;
 
     public ClienteDTO crearClienteUser(RegistroRequest registroRequest) throws BaseException{
@@ -68,6 +78,25 @@ public class ClienteService {
 
     public Cliente loginUsuario(String email, String password) {
         return clienteRepository.findUsuarioPassword(email, password);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Cliente cliente = clienteRepository.buscarPorEmail(email);
+
+        if(cliente != null){
+            List<GrantedAuthority> permisos = new ArrayList();
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_"+ cliente.getRol().toString());
+            permisos.add(p);
+
+            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attributes.getRequest().getSession(true);
+            session.setAttribute("usersession", cliente);
+
+            return new User(cliente.getEmail(), cliente.getPassword(),permisos);
+        }else{
+            return null;
+        }
     }
 
 //    @Override
